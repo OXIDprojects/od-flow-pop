@@ -10,13 +10,19 @@
 [{assign var="odOpenPop" value=$oConf->getConfigParam('odOpenPop')}]
 [{assign var="odClosePop" value=$oConf->getConfigParam('odClosePop')}]
 [{math assign="odClosePop" equation="x + y" x=$odOpenPop y=$odClosePop}]
+[{oxscript include=$oViewConf->getModuleUrl('OD-FlowPop','out/src/js/od_flow_pop.js') priority=10}]
+[{oxscript include="js/libs/jquery.cookie.min.js"}]
+[{oxscript add="$('#odFlowPop').odFlowPop();"}]
 [{capture assign="odFlowPop" name="odFlowPop"}]
+var my_cookie = $.cookie('odFlowPopped');
+if (!my_cookie) {
 setTimeout(function(){
 $('#odFlowPop').modal('show');
 }, [{$odOpenPop}]);
 setTimeout(function(){
 $('#odFlowPop').modal('hide');
 }, [{$odClosePop}]);
+}
 [{/capture}]
 [{oxscript add=$odFlowPop}]
 <!-- OD Flow-Modal -->

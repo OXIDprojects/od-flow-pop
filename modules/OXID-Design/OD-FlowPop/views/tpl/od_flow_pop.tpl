@@ -14,8 +14,8 @@
 [{oxscript include="js/libs/jquery.cookie.min.js"}]
 [{oxscript add="$('#odFlowPop').odFlowPop();"}]
 [{capture assign="odFlowPop" name="odFlowPop"}]
-var my_cookie = $.cookie('odFlowPopped');
-if (!my_cookie) {
+var odFPopCookie = $.cookie('odFlowPopped');
+if (!odFPopCookie) {
 setTimeout(function(){
 $('#odFlowPop').modal('show');
 }, [{$odOpenPop}]);
